@@ -1,0 +1,11 @@
+system {
+    host-name {{ device.name }};
+    domain-name example.com;
+    time-zone UTC;
+    authentication-order [ password radius ];
+    {% if ntp_servers %}
+    ntp { {% for server in ntp_servers %}
+        server {{ server }};{% endfor %}
+    }
+    {% endif %}
+}

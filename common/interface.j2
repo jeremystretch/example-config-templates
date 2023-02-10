@@ -1,0 +1,7 @@
+    interface {{ interface.name }} {
+        {% if interface.description %}description {{ interface.description }};{% endif %}
+        unit 0 {
+            {% for ip in interface.ip_addresses.all() %}
+                address {{ ip }};{% endfor %}
+        }
+    }
